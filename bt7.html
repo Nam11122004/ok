@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bt7.css">
+    <style>
+        .error {
+          color: orangered !important;
+          font-size: 14px;
+        }
+    
+        /* #sex_error {
+          width: 400px ;
+          text-align: center;
+        } */
+      </style>
+</head>
+<body>
+    <div class="login">
+        <h1>Đăng kí </h1>
+        <form action="">
+          <div class="id">
+            <span>Mã sinh viên</span>
+            <span id="id_error" class="error"></span>
+            <br>
+            <input type="text" name="id" placeholder="PH35172">
+          </div>
+          <div class="fullName">
+            <span>Họ và tên</span>
+            <span id="name_error" class="error"></span>
+            <br>
+            <input type="text" name="name" placeholder="Đặng Quốc Nam">
+          </div>
+          <div class="email">
+            <span>Email</span>
+            <span id="email_error" class="error"></span>
+            <br>
+            <input type="email" name="email" placeholder="namdqph35172@gmail.com">
+          </div>
+          <div class="gender">
+            <span>Giới tính</span>
+            <span id="sex_error" class="error"></span>
+            <br>
+            <div class="gender-row">
+              <div class="gender-colum">
+                <span>Nam</span>
+                <input class="status_sex" name="sex" type="radio">
+              </div>
+              <div class="gender-colum">
+                <span>Nữ</span>
+                <input class="status_sex" name="sex" type="radio">
+              </div>
+            </div>
+          </div>
+          <div class="favorite">
+            <span>Sở thích của bạn :</span>
+            <span id="favorite_error" class="error"></span>
+            <br>
+            <div class="favorite-row">
+              <div class="favorite-colum">
+                <span>Xem phim</span>
+                <input class="status_favorite" type="checkbox">
+              </div>
+              <div class="favorite-colum">
+                <span>Du lịch</span>
+                <input class="status_favorite" type="checkbox">
+              </div>
+              <div class="favorite-colum">
+                <span>Âm nhạc</span>
+                <input class="status_favorite" type="checkbox">
+              </div>
+              <div class="favorite-colum">
+                <span>Ẩm thực</span>
+                <input class="status_favorite" type="checkbox">
+              </div>
+              <div class="favorite-colum">
+                <span>Khác</span>
+                <input class="status_favorite" type="checkbox">
+              </div>
+            </div>
+          </div>
+          <div class="nationality">
+            <span id="nationality_error" class="error"></span>
+            <select name="" id="nationality">
+              <option value="null">Quốc tịch</option>
+              <option value="">Việt Nam</option>
+              <option value="">Nhật Bản</option>
+              <option value="">Anh Quốc</option>
+              <option value="">Đức</option>
+              <option value="">Tây Ban Nha</option>
+              <option value="">Trung Quốc</option>
+              <option value="">Mỹ</option>
+            </select>
+          </div>
+          <div class="note">
+            <span>Ghi chú</span>
+            <textarea name="" id="" cols="50" rows="5"></textarea>
+          </div>
+        </form>
+        <button onclick="validate()" type="submit">Đăng ký</button>
+      </div>
+    </div>
+  
+    <script>
+      function validate() {
+        // Bắt đầu check validate ID:
+        let inputId = document.querySelector("[name='id']").value.trim().toUpperCase();
+        let checkId = `Vui lòng nhập đúng định dạng!`;
+        let listPlace = ["H", "S", "D", "T", "C"];
+        let checkPlaceId = inputId.split("");
+  
+        if (inputId.length == 0) {
+          checkId = `Vui lòng nhập ID!`
+        }
+        else if (inputId.startsWith("P") == false) {
+          checkId = `Vui lòng nhập đúng định dạng!`;
+        }
+        else {
+          for (let i = 0; i < 5; i++) {
+            if (checkPlaceId.length != 7) {
+              checkId = `Vui lòng nhập đúng định dạng!`;
+              break;
+            }
+            if (listPlace[i] == checkPlaceId[1]) {
+              checkId = ``;
+            }
+            if (isNaN(checkPlaceId[i + 2]) == true) {
+              checkId = `Vui lòng nhập đúng định dạng!`;
+              break;
+            }
+          }
+        }
+  
+        document.querySelector("#id_error").innerText = checkId;
+        // Kết thúc check validate ID
+  
+        // Bắt đầu check validate Name:
+        let inputFullName = document.querySelector("[name='name']").value.trim();
+        let arrInputFullName = inputFullName.split(" ");
+        let checkFullName = ``;
+  
+        function checkNumbers() {
+          for (let item of arrInputFullName) {
+            if (isNaN(item) == false) {
+              return true;
+            }
+          }
+        }
+  
+        if (inputFullName.length == 0) {
+          checkFullName = `Vui lòng nhập Họ tên!`;
+        }
+        else if (arrInputFullName.length == 1 || checkNumbers()) {
+          checkFullName = `Vui lòng nhập đúng định dạng!`;
+        }
+  
+        document.querySelector("#name_error").innerText = checkFullName;
+        // Kết thúc check
+  
+        // Bắt đầu check validate Email:
+        let inputEmail = document.querySelector("[name='email']").value.trim();
+        let checkEmail = ``;
+        let arrCheckEmail = inputEmail.split("@");
+  
+        if (inputEmail.length == 0) {
+          checkEmail = `Vui lòng nhập Email!`;
+        }
+        else if (inputEmail.startsWith("@") == true || inputEmail.endsWith("@") == true || arrCheckEmail.length != 2 || arrCheckEmail[1].startsWith(".") == true || arrCheckEmail[1].includes(".") == false || arrCheckEmail[1].endsWith(".") == true) {
+          checkEmail = `Vui lòng nhập đúng định dạng!`;
+        }
+  
+        document.querySelector("#email_error").innerText = checkEmail;
+        // Kết thúc check validate Email
+  
+        // Bắt đầu check validate Giới tính:
+        let listStatusSex = document.querySelectorAll(".status_sex");
+        let checkStatusSex = `Vui lòng chọn!`;
+  
+        for (let check of listStatusSex) {
+          if (check.checked == true) {
+            checkStatusSex = ``;
+            break;
+          }
+        }
+  
+        document.querySelector("#sex_error").innerText = checkStatusSex;
+        // Kết thúc check validate Giới tính
+  
+        // Bắt đầu check validate Favorite:
+        let listStatusFavorite = document.querySelectorAll(".status_favorite");
+        let checkStatusFavorite = `Vui lòng chọn!`;
+  
+        for (let check of listStatusFavorite) {
+          if (check.checked == true) {
+            checkStatusFavorite = ``;
+          }
+        }
+  
+        document.querySelector("#favorite_error").innerText = checkStatusFavorite;
+        // Kết thúc check validate Favorite
+  
+        // Bắt đầu check Nationality:
+        let inputNationality = document.querySelector("#nationality").value;
+        document.querySelector("#nationality_error").innerText = inputNationality == "null" ? `Vui lòng chọn Quốc tịch!` : ``;
+        // Kết thúc check Nationality
+      }
+    </script>
+</body>
+</html>

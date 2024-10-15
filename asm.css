@@ -1,0 +1,57 @@
+body{
+    padding:0px ;
+    margin:0px;
+}
+.container{
+    max-width: 1000px;
+    margin:0 auto;
+}
+.container > header{
+    background-image: url('th\ \(1\).jpg');
+    background-size: 100% 120%;
+    height: 100px;
+    padding-bottom: 10%;
+    background-repeat: no-repeat;
+
+}
+.container > nav{
+    line-height: 40px;
+    background-color: orangered;
+    color: white;
+    text-align: center;
+    font-variant: small-caps;
+    
+    
+}
+.container > nav > a{
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    margin-top: 40px;
+    font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+padding: 100px;
+}
+.container > nav > a:hover{
+    color: yellow;
+}
+.container > article{
+    height: 500px;
+    width: 100%;
+    background-color: rgb(245, 242, 242);
+    float: left;
+}
+.container > article > iframe{
+    width: 100%;
+    min-height: 500px;
+}
+.container > footer{
+    border-top: 5px double rgb(0, 173, 113);
+    line-height: 50px;
+    background-color: lightcyan;
+    text-align: center;
+    font-variant: small-caps;
+    clear: both;
+}

@@ -1,0 +1,29 @@
+.sp{
+   display: flex;
+   flex-direction: row; 
+   justify-content: space-around;
+   gap: 10px;
+   color: rgb(83, 83, 71);
+   font-weight: 700;
+
+}
+.ip{
+    font-size: 15px;
+    color: rgb(21, 165, 103);
+    font-style: normal;
+    font-weight: 700;
+    
+}
+.h7{
+    float: left;
+    margin-left: 25px;
+    font-weight: 700;
+
+
+}
+button{
+    background-color: #5c79fa;
+    padding: 8px 100px;
+    color: #FFFFFF;
+    
+}
